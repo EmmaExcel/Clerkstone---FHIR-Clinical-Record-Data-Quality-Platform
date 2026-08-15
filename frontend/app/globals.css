@@ -1,0 +1,250 @@
+/*
+ * Clerkstone global styles.
+ *
+ * Imported AFTER nhsuk-frontend so these rules can safely override/extend the
+ * NHS.UK Design System for application-specific patterns.
+ */
+
+/* ------------------------------------------------------------------ */
+/* Persistent synthetic-data banner                                   */
+/* ------------------------------------------------------------------ */
+
+.clerkstone-data-banner {
+  background: #ffeb3b; /* nhsuk warning yellow */
+  border-bottom: 4px solid #212b32;
+  color: #212b32;
+}
+
+.clerkstone-data-banner__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+}
+
+.clerkstone-data-banner__icon {
+  flex: 0 0 auto;
+  margin-top: 0.1rem;
+}
+
+.clerkstone-data-banner__text {
+  margin: 0;
+  font-weight: 700;
+}
+
+.clerkstone-data-banner__text--sub {
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ------------------------------------------------------------------ */
+/* Severity badges — icon + text + colour (never colour-only)          */
+/* ------------------------------------------------------------------ */
+
+.clerkstone-severity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.clerkstone-severity__icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+}
+
+/* ------------------------------------------------------------------ */
+/* Clinical timeline                                                  */
+/* ------------------------------------------------------------------ */
+
+.clerkstone-timeline__group {
+  border-left: 4px solid #d8dde0;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.clerkstone-timeline__entry {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f4f5;
+}
+
+.clerkstone-timeline__entry--flagged {
+  border-left: 4px solid #d5281b;
+  padding-left: 0.75rem;
+}
+
+.clerkstone-timeline__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* ------------------------------------------------------------------ */
+/* Resource viewer (FHIR JSON)                                        */
+/* ------------------------------------------------------------------ */
+
+.clerkstone-json-tree {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  background: #f0f4f5;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid #d8dde0;
+}
+
+.clerkstone-json-indent {
+  margin: 0;
+  padding-left: 1.25rem;
+  border-left: 1px solid #d8dde0;
+}
+
+.clerkstone-json-node {
+  display: inline-block;
+}
+
+.clerkstone-json-node--match {
+  background: #fff3cd;
+  border-left: 3px solid #ffb81c;
+  box-shadow: inset 0 0 0 1px #ffe38f;
+  padding-left: 0.25rem;
+  border-radius: 2px;
+}
+
+.clerkstone-json-key {
+  color: #005eb8;
+}
+
+.clerkstone-json-punct {
+  color: #425563;
+}
+
+.clerkstone-json-string {
+  color: #007f3b;
+}
+
+.clerkstone-json-number {
+  color: #330072;
+}
+
+.clerkstone-json-boolean {
+  color: #8a1538;
+}
+
+.clerkstone-json-null {
+  color: #768692;
+}
+
+/* ------------------------------------------------------------------ */
+/* Quality dashboard                                                  */
+/* ------------------------------------------------------------------ */
+
+.clerkstone-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.clerkstone-stat {
+  background: #f0f4f5;
+  border-top: 4px solid #005eb8;
+  padding: 1rem;
+}
+
+.clerkstone-stat--error {
+  border-top-color: #d5281b;
+}
+
+.clerkstone-stat--warning {
+  border-top-color: #ed8b00;
+}
+
+.clerkstone-stat--info {
+  border-top-color: #005eb8;
+}
+
+.clerkstone-stat__value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Patient search results                                            */
+/* ------------------------------------------------------------------ */
+
+.clerkstone-search-results {
+  padding-left: 0;
+}
+
+.clerkstone-search-result {
+  display: block;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #f0f4f5;
+  text-decoration: none;
+}
+
+.clerkstone-search-result:hover,
+.clerkstone-search-result:focus {
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------------------ */
+/* Pagination                                                         */
+/* ------------------------------------------------------------------ */
+
+.clerkstone-pagination {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Chart legend (Recharts)                                            */
+/* ------------------------------------------------------------------ */
+
+.clerkstone-chart-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.clerkstone-chart-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.clerkstone-chart-legend__swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Focus visibility (defensive — nhsuk already styles :focus)         */
+/* ------------------------------------------------------------------ */
+
+.clerkstone-search-results [role="option"]:focus {
+  outline: 4px solid #ffeb3b;
+  outline-offset: 2px;
+}
+
+/* Screen-reader-only helper (mirrors nhsuk-u-visually-hidden). */
+.clerkstone-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
