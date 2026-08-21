@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="40" viewBox="0 0 280 40">
+  <rect width="40" height="40" rx="4" fill="#fff"/>
+  <path d="M27 11a12 12 0 1 0 0 18l-4-4a6.5 6.5 0 1 1 0-10z" fill="#005eb8"/>
+  <text x="50" y="28" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700">Clerkstone</text>
+</svg>
