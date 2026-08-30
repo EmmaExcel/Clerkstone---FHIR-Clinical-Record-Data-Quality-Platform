@@ -1,0 +1,750 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:p-00000",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "p-00000",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Patient"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "9910433214",
+            "extension": [
+              {
+                "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-NHSNumberVerificationStatus",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-NHSNumberVerificationStatus",
+                      "code": "01"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "family": "Chukwu",
+            "given": [
+              "Oliver"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1989-01-01",
+        "address": [
+          {
+            "postalCode": "G12 4AB",
+            "city": "Glasgow",
+            "country": "GB"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Patient"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-p-00000-0",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-p-00000-0",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "ambulatory"
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "period": {
+          "start": "2026-01-18T16:12:00Z"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Encounter"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-p-00000-0-0",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-p-00000-0-0",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "86290005",
+              "display": "Respiratory rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p-00000-0"
+        },
+        "effectiveDateTime": "2026-01-25T05:44:00Z",
+        "valueQuantity": {
+          "value": 999.0,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-p-00000-0-1",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-p-00000-0-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "50373000",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p-00000-0"
+        },
+        "effectiveDateTime": "2026-06-09T04:13:00Z",
+        "valueQuantity": {
+          "value": 164.2,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-p-00000-0-2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-p-00000-0-2",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "27113001",
+              "display": "Body weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p-00000-0"
+        },
+        "effectiveDateTime": "2026-06-28T11:38:00Z",
+        "valueQuantity": {
+          "value": 81.9,
+          "unit": "kg",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-p-00000-1",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-p-00000-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "inpatient"
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "period": {
+          "start": "2026-01-24T08:29:00Z"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Encounter"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-p-00000-1-0",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-p-00000-1-0",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "271650006",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p-00000-1"
+        },
+        "effectiveDateTime": "2026-05-27T20:39:00Z",
+        "valueQuantity": {
+          "value": 81.5,
+          "unit": "mm[Hg]",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-p-00000-1-1",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-p-00000-1-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "27113001",
+              "display": "Body weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p-00000-1"
+        },
+        "effectiveDateTime": "2026-01-22T07:49:00Z",
+        "valueQuantity": {
+          "value": 71.1,
+          "unit": "kg",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-p-00000-1-2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-p-00000-1-2",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386725007",
+              "display": "Body temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p-00000-1"
+        },
+        "effectiveDateTime": "2026-02-28T07:55:00Z",
+        "valueQuantity": {
+          "value": 36.6,
+          "unit": "degC",
+          "system": "http://unitsofmeasure.org",
+          "code": "degC"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-p-00000-1-3",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-p-00000-1-3",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "271650006",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p-00000-1"
+        },
+        "effectiveDateTime": "2026-06-06T11:22:00Z",
+        "valueQuantity": {
+          "value": 73.2,
+          "unit": "mm[Hg]",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-p-00000-1-4",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-p-00000-1-4",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "431314004",
+              "display": "Peripheral oxygen saturation"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p-00000-1"
+        },
+        "effectiveDateTime": "2026-05-23T21:41:00Z",
+        "valueQuantity": {
+          "value": 98.8,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-p-00000-2",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-p-00000-2",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "outpatient"
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "period": {
+          "start": "2026-03-18T02:46:00Z"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Encounter"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-p-00000-2-0",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-p-00000-2-0",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "86290005",
+              "display": "Respiratory rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p-00000-2"
+        },
+        "effectiveDateTime": "2026-04-22T10:53:00Z",
+        "valueQuantity": {
+          "value": 11.6,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-p-00000-2-1",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-p-00000-2-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "271649006",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p-00000-2"
+        },
+        "effectiveDateTime": "2026-04-27T01:51:00Z",
+        "valueQuantity": {
+          "value": 136.6,
+          "unit": "mm[Hg]",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-p-00000-2-2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-p-00000-2-2",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "27113001",
+              "display": "Body weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p-00000-2"
+        },
+        "effectiveDateTime": "2026-06-07T20:31:00Z",
+        "valueQuantity": {
+          "value": 76.5,
+          "unit": "kg",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:cond-p-00000-0",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-p-00000-0",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Condition"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "13645005",
+              "display": "Chronic obstructive lung disease"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "onsetDateTime": "2020-08-05T00:00:00Z"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Condition"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:cond-p-00000-1",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-p-00000-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-Condition"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "195967001",
+              "display": "Asthma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "onsetDateTime": "2020-03-08T00:00:00Z"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Condition"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:med-p-00000-0",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "med-p-00000-0",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-MedicationRequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://dmd.nhs.uk/",
+              "code": "318330008",
+              "display": "Lisinopril 10mg tablet"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "authoredOn": "2026-07-19",
+        "dosageInstruction": [
+          {
+            "text": "Take as directed (illustrative)"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "MedicationRequest"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:med-p-00000-1",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "med-p-00000-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-MedicationRequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://dmd.nhs.uk/",
+              "code": "321278003",
+              "display": "Metformin 500mg tablet"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "authoredOn": "2026-06-08",
+        "dosageInstruction": [
+          {
+            "text": "Take as directed (illustrative)"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "MedicationRequest"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:med-p-00000-2",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "med-p-00000-2",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.org.uk/StructureDefinition/UKCore-MedicationRequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://dmd.nhs.uk/",
+              "code": "324328004",
+              "display": "Atorvastatin 20mg tablet"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/p-00000"
+        },
+        "authoredOn": "2026-08-03",
+        "dosageInstruction": [
+          {
+            "text": "Take as directed (illustrative)"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "MedicationRequest"
+      }
+    }
+  ]
+}
