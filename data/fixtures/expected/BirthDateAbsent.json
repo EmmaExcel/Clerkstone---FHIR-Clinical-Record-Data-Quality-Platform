@@ -1,0 +1,11 @@
+{
+  "defect": "BirthDateAbsent",
+  "rule": "REQ-001",
+  "findings": [
+    {
+      "rule_id": "REQ-001",
+      "severity": "warning",
+      "expression": "Patient.birthDate"
+    }
+  ]
+}

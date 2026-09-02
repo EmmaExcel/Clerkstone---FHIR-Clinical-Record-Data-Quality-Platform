@@ -1,0 +1,11 @@
+{
+  "defect": "BirthDateTooOld",
+  "rule": "TEMP-002",
+  "findings": [
+    {
+      "rule_id": "TEMP-002",
+      "severity": "warning",
+      "expression": "Patient.birthDate"
+    }
+  ]
+}
