@@ -1,0 +1,11 @@
+{
+  "defect": "DanglingReference",
+  "rule": "REF-001",
+  "findings": [
+    {
+      "rule_id": "REF-001",
+      "severity": "error",
+      "expression": "Observation.subject.reference"
+    }
+  ]
+}

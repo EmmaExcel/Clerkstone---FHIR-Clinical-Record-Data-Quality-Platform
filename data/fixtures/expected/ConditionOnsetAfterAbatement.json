@@ -1,0 +1,11 @@
+{
+  "defect": "ConditionOnsetAfterAbatement",
+  "rule": "TEMP-007",
+  "findings": [
+    {
+      "rule_id": "TEMP-007",
+      "severity": "error",
+      "expression": "Condition.abatement[x]"
+    }
+  ]
+}

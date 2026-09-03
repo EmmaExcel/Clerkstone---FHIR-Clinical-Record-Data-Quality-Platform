@@ -1,0 +1,11 @@
+{
+  "defect": "CodeSystemUnrecognised",
+  "rule": "TERM-001",
+  "findings": [
+    {
+      "rule_id": "TERM-001",
+      "severity": "warning",
+      "expression": "*.code.coding.system"
+    }
+  ]
+}

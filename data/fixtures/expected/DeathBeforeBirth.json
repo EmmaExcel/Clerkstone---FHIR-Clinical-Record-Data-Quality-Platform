@@ -1,0 +1,66 @@
+{
+  "defect": "DeathBeforeBirth",
+  "rule": "TEMP-004",
+  "findings": [
+    {
+      "rule_id": "TEMP-004",
+      "severity": "error",
+      "expression": "Patient.deceasedDateTime"
+    },
+    {
+      "rule_id": "TEMP-006",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-006",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-006",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-006",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-006",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-006",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-006",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-006",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-006",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-006",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-006",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "defect": "ConditionOnsetInFuture",
+  "rule": "TEMP-009",
+  "findings": [
+    {
+      "rule_id": "TEMP-009",
+      "severity": "warning",
+      "expression": "Condition.onset[x]"
+    }
+  ]
+}
