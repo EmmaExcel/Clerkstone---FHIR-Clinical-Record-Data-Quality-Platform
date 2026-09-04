@@ -1,0 +1,11 @@
+{
+  "defect": "DecimalShift",
+  "rule": "PHYS-001",
+  "findings": [
+    {
+      "rule_id": "PHYS-001",
+      "severity": "error",
+      "expression": "Observation.valueQuantity.value"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "defect": "DmdCodeFormatInvalid",
+  "rule": "TERM-008",
+  "findings": [
+    {
+      "rule_id": "TERM-003",
+      "severity": "warning",
+      "expression": "MedicationRequest.medicationCodeableConcept.coding"
+    },
+    {
+      "rule_id": "TERM-008",
+      "severity": "warning",
+      "expression": "MedicationRequest.medicationCodeableConcept.coding"
+    }
+  ]
+}

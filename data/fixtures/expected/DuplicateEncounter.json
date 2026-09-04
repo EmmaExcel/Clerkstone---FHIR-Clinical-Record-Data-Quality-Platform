@@ -1,0 +1,11 @@
+{
+  "defect": "DuplicateEncounter",
+  "rule": "DUP-002",
+  "findings": [
+    {
+      "rule_id": "DUP-002",
+      "severity": "warning",
+      "expression": "Encounter.period.start"
+    }
+  ]
+}

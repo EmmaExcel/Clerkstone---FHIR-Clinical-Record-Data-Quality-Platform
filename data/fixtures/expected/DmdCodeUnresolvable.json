@@ -1,0 +1,11 @@
+{
+  "defect": "DmdCodeUnresolvable",
+  "rule": "TERM-003",
+  "findings": [
+    {
+      "rule_id": "TERM-003",
+      "severity": "warning",
+      "expression": "MedicationRequest.medicationCodeableConcept.coding"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "defect": "DiastolicBp",
+  "rule": "PHYS-002",
+  "findings": [
+    {
+      "rule_id": "PHYS-002",
+      "severity": "error",
+      "expression": "Observation.valueQuantity.value"
+    }
+  ]
+}
