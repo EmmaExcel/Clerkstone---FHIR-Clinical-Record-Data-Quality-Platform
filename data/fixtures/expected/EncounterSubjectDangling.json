@@ -1,0 +1,11 @@
+{
+  "defect": "EncounterSubjectDangling",
+  "rule": "REF-002",
+  "findings": [
+    {
+      "rule_id": "REF-002",
+      "severity": "error",
+      "expression": "Encounter.subject.reference"
+    }
+  ]
+}

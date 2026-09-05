@@ -1,0 +1,11 @@
+{
+  "defect": "EncounterStatusAbsent",
+  "rule": "REQ-008",
+  "findings": [
+    {
+      "rule_id": "REQ-008",
+      "severity": "error",
+      "expression": "Encounter.status"
+    }
+  ]
+}

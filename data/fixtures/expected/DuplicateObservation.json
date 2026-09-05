@@ -1,0 +1,11 @@
+{
+  "defect": "DuplicateObservation",
+  "rule": "DUP-001",
+  "findings": [
+    {
+      "rule_id": "DUP-001",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    }
+  ]
+}

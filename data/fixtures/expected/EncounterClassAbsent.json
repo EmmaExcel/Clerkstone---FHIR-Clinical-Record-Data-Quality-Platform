@@ -1,0 +1,11 @@
+{
+  "defect": "EncounterClassAbsent",
+  "rule": "REQ-004",
+  "findings": [
+    {
+      "rule_id": "REQ-004",
+      "severity": "warning",
+      "expression": "Encounter.class"
+    }
+  ]
+}
