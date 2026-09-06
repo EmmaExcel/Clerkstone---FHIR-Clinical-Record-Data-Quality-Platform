@@ -1,0 +1,11 @@
+{
+  "defect": "HeartRate",
+  "rule": "PHYS-003",
+  "findings": [
+    {
+      "rule_id": "PHYS-003",
+      "severity": "error",
+      "expression": "Observation.valueQuantity.value"
+    }
+  ]
+}

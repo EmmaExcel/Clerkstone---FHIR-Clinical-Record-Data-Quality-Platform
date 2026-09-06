@@ -1,0 +1,11 @@
+{
+  "defect": "GenderAbsent",
+  "rule": "REQ-002",
+  "findings": [
+    {
+      "rule_id": "REQ-002",
+      "severity": "warning",
+      "expression": "Patient.gender"
+    }
+  ]
+}

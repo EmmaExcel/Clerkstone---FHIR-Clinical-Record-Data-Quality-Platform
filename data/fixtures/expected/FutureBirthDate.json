@@ -1,0 +1,66 @@
+{
+  "defect": "FutureBirthDate",
+  "rule": "TEMP-001",
+  "findings": [
+    {
+      "rule_id": "TEMP-001",
+      "severity": "error",
+      "expression": "Patient.birthDate"
+    },
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    },
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    }
+  ]
+}

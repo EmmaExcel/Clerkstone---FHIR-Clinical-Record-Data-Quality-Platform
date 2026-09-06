@@ -1,0 +1,11 @@
+{
+  "defect": "Height",
+  "rule": "PHYS-007",
+  "findings": [
+    {
+      "rule_id": "PHYS-007",
+      "severity": "error",
+      "expression": "Observation.valueQuantity.value"
+    }
+  ]
+}
