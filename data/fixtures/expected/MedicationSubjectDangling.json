@@ -1,0 +1,11 @@
+{
+  "defect": "MedicationSubjectDangling",
+  "rule": "REF-006",
+  "findings": [
+    {
+      "rule_id": "REF-006",
+      "severity": "error",
+      "expression": "MedicationRequest.subject.reference"
+    }
+  ]
+}

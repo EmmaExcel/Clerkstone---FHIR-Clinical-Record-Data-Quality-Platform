@@ -1,0 +1,11 @@
+{
+  "defect": "InvalidNhsNumberCheckDigit",
+  "rule": "IDENT-003",
+  "findings": [
+    {
+      "rule_id": "IDENT-003",
+      "severity": "error",
+      "expression": "Patient.identifier.value"
+    }
+  ]
+}

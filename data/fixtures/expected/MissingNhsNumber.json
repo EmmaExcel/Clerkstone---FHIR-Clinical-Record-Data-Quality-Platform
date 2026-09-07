@@ -1,0 +1,11 @@
+{
+  "defect": "MissingNhsNumber",
+  "rule": "IDENT-001",
+  "findings": [
+    {
+      "rule_id": "IDENT-001",
+      "severity": "warning",
+      "expression": "Patient.identifier.where(system='https://fhir.nhs.uk/Id/nhs-number')"
+    }
+  ]
+}

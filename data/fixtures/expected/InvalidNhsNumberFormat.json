@@ -1,0 +1,16 @@
+{
+  "defect": "InvalidNhsNumberFormat",
+  "rule": "IDENT-009",
+  "findings": [
+    {
+      "rule_id": "IDENT-003",
+      "severity": "error",
+      "expression": "Patient.identifier.value"
+    },
+    {
+      "rule_id": "IDENT-009",
+      "severity": "error",
+      "expression": "Patient.identifier.value"
+    }
+  ]
+}

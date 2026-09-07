@@ -1,0 +1,11 @@
+{
+  "defect": "MedicationWithoutCode",
+  "rule": "REQ-009",
+  "findings": [
+    {
+      "rule_id": "REQ-009",
+      "severity": "error",
+      "expression": "MedicationRequest.medicationCodeableConcept"
+    }
+  ]
+}
