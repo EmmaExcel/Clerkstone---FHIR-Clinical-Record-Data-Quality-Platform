@@ -1,0 +1,11 @@
+{
+  "defect": "MissingObservationCode",
+  "rule": "REQ-006",
+  "findings": [
+    {
+      "rule_id": "REQ-006",
+      "severity": "error",
+      "expression": "Observation.code"
+    }
+  ]
+}

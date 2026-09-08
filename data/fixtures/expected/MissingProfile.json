@@ -1,0 +1,11 @@
+{
+  "defect": "MissingProfile",
+  "rule": "PROF-002",
+  "findings": [
+    {
+      "rule_id": "PROF-002",
+      "severity": "warning",
+      "expression": "Resource.meta.profile"
+    }
+  ]
+}

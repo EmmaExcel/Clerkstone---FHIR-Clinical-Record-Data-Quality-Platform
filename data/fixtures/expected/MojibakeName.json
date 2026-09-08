@@ -1,0 +1,11 @@
+{
+  "defect": "MojibakeName",
+  "rule": "STRUCT-004",
+  "findings": [
+    {
+      "rule_id": "STRUCT-004",
+      "severity": "warning",
+      "expression": "Patient.name.family | Patient.name.given"
+    }
+  ]
+}

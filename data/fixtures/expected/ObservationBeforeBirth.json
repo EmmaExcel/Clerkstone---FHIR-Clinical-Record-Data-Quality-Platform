@@ -1,0 +1,11 @@
+{
+  "defect": "ObservationBeforeBirth",
+  "rule": "TEMP-005",
+  "findings": [
+    {
+      "rule_id": "TEMP-005",
+      "severity": "warning",
+      "expression": "Observation.effective[x]"
+    }
+  ]
+}
