@@ -1,0 +1,11 @@
+{
+  "defect": "ObservationsWithoutEncounters",
+  "rule": "COH-004",
+  "findings": [
+    {
+      "rule_id": "COH-004",
+      "severity": "info",
+      "expression": "Patient"
+    }
+  ]
+}

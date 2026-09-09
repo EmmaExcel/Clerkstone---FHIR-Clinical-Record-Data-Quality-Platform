@@ -1,0 +1,11 @@
+{
+  "defect": "PatientNameAbsent",
+  "rule": "REQ-007",
+  "findings": [
+    {
+      "rule_id": "REQ-007",
+      "severity": "warning",
+      "expression": "Patient.name"
+    }
+  ]
+}

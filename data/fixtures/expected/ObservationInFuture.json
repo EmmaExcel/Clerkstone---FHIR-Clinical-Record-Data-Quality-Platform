@@ -1,0 +1,11 @@
+{
+  "defect": "ObservationInFuture",
+  "rule": "TEMP-008",
+  "findings": [
+    {
+      "rule_id": "TEMP-008",
+      "severity": "error",
+      "expression": "Observation.effective[x]"
+    }
+  ]
+}

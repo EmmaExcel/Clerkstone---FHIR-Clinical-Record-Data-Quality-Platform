@@ -1,0 +1,11 @@
+{
+  "defect": "ObservationStatusAbsent",
+  "rule": "REQ-005",
+  "findings": [
+    {
+      "rule_id": "REQ-005",
+      "severity": "error",
+      "expression": "Observation.status"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "defect": "ObservationSubjectMissing",
+  "rule": "REF-005",
+  "findings": [
+    {
+      "rule_id": "REF-005",
+      "severity": "warning",
+      "expression": "Observation.subject"
+    }
+  ]
+}
