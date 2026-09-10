@@ -1,0 +1,11 @@
+{
+  "defect": "TemporalInversion",
+  "rule": "TEMP-003",
+  "findings": [
+    {
+      "rule_id": "TEMP-003",
+      "severity": "error",
+      "expression": "Encounter.period.end"
+    }
+  ]
+}

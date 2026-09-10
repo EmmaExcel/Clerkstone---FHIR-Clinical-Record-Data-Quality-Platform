@@ -1,0 +1,11 @@
+{
+  "defect": "SharedNhsNumber",
+  "rule": "IDENT-005",
+  "findings": [
+    {
+      "rule_id": "IDENT-005",
+      "severity": "error",
+      "expression": "Patient.identifier.value"
+    }
+  ]
+}

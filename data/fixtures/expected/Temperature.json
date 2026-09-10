@@ -1,0 +1,11 @@
+{
+  "defect": "Temperature",
+  "rule": "PHYS-005",
+  "findings": [
+    {
+      "rule_id": "PHYS-005",
+      "severity": "error",
+      "expression": "Observation.valueQuantity.value"
+    }
+  ]
+}

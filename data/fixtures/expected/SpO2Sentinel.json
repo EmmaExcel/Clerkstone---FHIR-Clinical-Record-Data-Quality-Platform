@@ -1,0 +1,11 @@
+{
+  "defect": "SpO2Sentinel",
+  "rule": "PHYS-004",
+  "findings": [
+    {
+      "rule_id": "PHYS-004",
+      "severity": "error",
+      "expression": "Observation.valueQuantity.value"
+    }
+  ]
+}

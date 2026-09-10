@@ -1,0 +1,11 @@
+{
+  "defect": "RespiratoryRate",
+  "rule": "PHYS-008",
+  "findings": [
+    {
+      "rule_id": "PHYS-008",
+      "severity": "error",
+      "expression": "Observation.valueQuantity.value"
+    }
+  ]
+}
