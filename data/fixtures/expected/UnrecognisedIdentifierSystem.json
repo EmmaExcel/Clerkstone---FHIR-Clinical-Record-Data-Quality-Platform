@@ -1,0 +1,11 @@
+{
+  "defect": "UnrecognisedIdentifierSystem",
+  "rule": "IDENT-006",
+  "findings": [
+    {
+      "rule_id": "IDENT-006",
+      "severity": "warning",
+      "expression": "Patient.identifier.system"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "defect": "TwoNhsNumbers",
+  "rule": "IDENT-004",
+  "findings": [
+    {
+      "rule_id": "IDENT-004",
+      "severity": "error",
+      "expression": "Patient.identifier"
+    }
+  ]
+}

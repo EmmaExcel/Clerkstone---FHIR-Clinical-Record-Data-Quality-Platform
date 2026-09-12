@@ -1,0 +1,11 @@
+{
+  "defect": "UnresolvableSnomedCode",
+  "rule": "TERM-002",
+  "findings": [
+    {
+      "rule_id": "TERM-002",
+      "severity": "warning",
+      "expression": "*.code.coding.where(system='http://snomed.info/sct')"
+    }
+  ]
+}

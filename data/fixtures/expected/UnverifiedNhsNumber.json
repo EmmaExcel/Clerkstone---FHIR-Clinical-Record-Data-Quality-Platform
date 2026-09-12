@@ -1,0 +1,11 @@
+{
+  "defect": "UnverifiedNhsNumber",
+  "rule": "IDENT-002",
+  "findings": [
+    {
+      "rule_id": "IDENT-002",
+      "severity": "info",
+      "expression": "Patient.identifier.extension"
+    }
+  ]
+}

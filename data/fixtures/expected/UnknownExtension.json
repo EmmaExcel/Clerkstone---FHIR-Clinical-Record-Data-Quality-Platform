@@ -1,0 +1,11 @@
+{
+  "defect": "UnknownExtension",
+  "rule": "STRUCT-002",
+  "findings": [
+    {
+      "rule_id": "STRUCT-002",
+      "severity": "warning",
+      "expression": "*.extension.url"
+    }
+  ]
+}
