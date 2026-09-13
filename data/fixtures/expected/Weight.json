@@ -1,0 +1,11 @@
+{
+  "defect": "Weight",
+  "rule": "PHYS-006",
+  "findings": [
+    {
+      "rule_id": "PHYS-006",
+      "severity": "error",
+      "expression": "Observation.valueQuantity.value"
+    }
+  ]
+}
