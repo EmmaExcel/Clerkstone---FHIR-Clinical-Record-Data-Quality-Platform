@@ -1,0 +1,245 @@
+{
+  "seed": 7,
+  "defects": [
+    {
+      "defect": "MissingNhsNumber",
+      "rule": "IDENT-001",
+      "file": "MissingNhsNumber.json"
+    },
+    {
+      "defect": "InvalidNhsNumberCheckDigit",
+      "rule": "IDENT-003",
+      "file": "InvalidNhsNumberCheckDigit.json"
+    },
+    {
+      "defect": "TemporalInversion",
+      "rule": "TEMP-003",
+      "file": "TemporalInversion.json"
+    },
+    {
+      "defect": "FutureBirthDate",
+      "rule": "TEMP-001",
+      "file": "FutureBirthDate.json"
+    },
+    {
+      "defect": "DecimalShift",
+      "rule": "PHYS-001",
+      "file": "DecimalShift.json"
+    },
+    {
+      "defect": "SpO2Sentinel",
+      "rule": "PHYS-004",
+      "file": "SpO2Sentinel.json"
+    },
+    {
+      "defect": "UnresolvableSnomedCode",
+      "rule": "TERM-002",
+      "file": "UnresolvableSnomedCode.json"
+    },
+    {
+      "defect": "DanglingReference",
+      "rule": "REF-001",
+      "file": "DanglingReference.json"
+    },
+    {
+      "defect": "DuplicateObservation",
+      "rule": "DUP-001",
+      "file": "DuplicateObservation.json"
+    },
+    {
+      "defect": "MissingProfile",
+      "rule": "PROF-002",
+      "file": "MissingProfile.json"
+    },
+    {
+      "defect": "MojibakeName",
+      "rule": "STRUCT-004",
+      "file": "MojibakeName.json"
+    },
+    {
+      "defect": "MissingObservationCode",
+      "rule": "REQ-006",
+      "file": "MissingObservationCode.json"
+    },
+    {
+      "defect": "UnverifiedNhsNumber",
+      "rule": "IDENT-002",
+      "file": "UnverifiedNhsNumber.json"
+    },
+    {
+      "defect": "TwoNhsNumbers",
+      "rule": "IDENT-004",
+      "file": "TwoNhsNumbers.json"
+    },
+    {
+      "defect": "SharedNhsNumber",
+      "rule": "IDENT-005",
+      "file": "SharedNhsNumber.json"
+    },
+    {
+      "defect": "UnrecognisedIdentifierSystem",
+      "rule": "IDENT-006",
+      "file": "UnrecognisedIdentifierSystem.json"
+    },
+    {
+      "defect": "InvalidNhsNumberFormat",
+      "rule": "IDENT-009",
+      "file": "InvalidNhsNumberFormat.json"
+    },
+    {
+      "defect": "BirthDateAbsent",
+      "rule": "REQ-001",
+      "file": "BirthDateAbsent.json"
+    },
+    {
+      "defect": "GenderAbsent",
+      "rule": "REQ-002",
+      "file": "GenderAbsent.json"
+    },
+    {
+      "defect": "GenderOutOfValueSet",
+      "rule": "REQ-003",
+      "file": "GenderOutOfValueSet.json"
+    },
+    {
+      "defect": "EncounterClassAbsent",
+      "rule": "REQ-004",
+      "file": "EncounterClassAbsent.json"
+    },
+    {
+      "defect": "ObservationStatusAbsent",
+      "rule": "REQ-005",
+      "file": "ObservationStatusAbsent.json"
+    },
+    {
+      "defect": "PatientNameAbsent",
+      "rule": "REQ-007",
+      "file": "PatientNameAbsent.json"
+    },
+    {
+      "defect": "EncounterStatusAbsent",
+      "rule": "REQ-008",
+      "file": "EncounterStatusAbsent.json"
+    },
+    {
+      "defect": "MedicationWithoutCode",
+      "rule": "REQ-009",
+      "file": "MedicationWithoutCode.json"
+    },
+    {
+      "defect": "EncounterSubjectDangling",
+      "rule": "REF-002",
+      "file": "EncounterSubjectDangling.json"
+    },
+    {
+      "defect": "ObservationSubjectMissing",
+      "rule": "REF-005",
+      "file": "ObservationSubjectMissing.json"
+    },
+    {
+      "defect": "MedicationSubjectDangling",
+      "rule": "REF-006",
+      "file": "MedicationSubjectDangling.json"
+    },
+    {
+      "defect": "ObservationEncounterDangling",
+      "rule": "REF-004",
+      "file": "ObservationEncounterDangling.json"
+    },
+    {
+      "defect": "BirthDateTooOld",
+      "rule": "TEMP-002",
+      "file": "BirthDateTooOld.json"
+    },
+    {
+      "defect": "DeathBeforeBirth",
+      "rule": "TEMP-004",
+      "file": "DeathBeforeBirth.json"
+    },
+    {
+      "defect": "ObservationBeforeBirth",
+      "rule": "TEMP-005",
+      "file": "ObservationBeforeBirth.json"
+    },
+    {
+      "defect": "ConditionOnsetAfterAbatement",
+      "rule": "TEMP-007",
+      "file": "ConditionOnsetAfterAbatement.json"
+    },
+    {
+      "defect": "ObservationInFuture",
+      "rule": "TEMP-008",
+      "file": "ObservationInFuture.json"
+    },
+    {
+      "defect": "ConditionOnsetInFuture",
+      "rule": "TEMP-009",
+      "file": "ConditionOnsetInFuture.json"
+    },
+    {
+      "defect": "DiastolicBp",
+      "rule": "PHYS-002",
+      "file": "DiastolicBp.json"
+    },
+    {
+      "defect": "HeartRate",
+      "rule": "PHYS-003",
+      "file": "HeartRate.json"
+    },
+    {
+      "defect": "Temperature",
+      "rule": "PHYS-005",
+      "file": "Temperature.json"
+    },
+    {
+      "defect": "Weight",
+      "rule": "PHYS-006",
+      "file": "Weight.json"
+    },
+    {
+      "defect": "Height",
+      "rule": "PHYS-007",
+      "file": "Height.json"
+    },
+    {
+      "defect": "RespiratoryRate",
+      "rule": "PHYS-008",
+      "file": "RespiratoryRate.json"
+    },
+    {
+      "defect": "CodeSystemUnrecognised",
+      "rule": "TERM-001",
+      "file": "CodeSystemUnrecognised.json"
+    },
+    {
+      "defect": "DmdCodeUnresolvable",
+      "rule": "TERM-003",
+      "file": "DmdCodeUnresolvable.json"
+    },
+    {
+      "defect": "DmdCodeFormatInvalid",
+      "rule": "TERM-008",
+      "file": "DmdCodeFormatInvalid.json"
+    },
+    {
+      "defect": "DuplicateEncounter",
+      "rule": "DUP-002",
+      "file": "DuplicateEncounter.json"
+    },
+    {
+      "defect": "UnknownExtension",
+      "rule": "STRUCT-002",
+      "file": "UnknownExtension.json"
+    },
+    {
+      "defect": "EncounterWithoutObservations",
+      "rule": "COH-001",
+      "file": "EncounterWithoutObservations.json"
+    },
+    {
+      "defect": "ObservationsWithoutEncounters",
+      "rule": "COH-004",
+      "file": "ObservationsWithoutEncounters.json"
+    }
+  ]
+}
