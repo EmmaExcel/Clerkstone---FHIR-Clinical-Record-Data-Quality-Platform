@@ -1,0 +1,28 @@
+{
+  "name": "Clerkstone illustrative terminology subset",
+  "description": "A small, hand-verified subset of SNOMED CT / dm+d concepts used by the synthetic-data harness. ILLUSTRATIVE AND NON-CLINICAL — not an official NHS mapping. See docs/DATA_LICENCES.md.",
+  "concepts": [
+    { "system": "http://snomed.info/sct", "code": "271649006", "display": "Systolic blood pressure", "active": true },
+    { "system": "http://snomed.info/sct", "code": "271650006", "display": "Diastolic blood pressure", "active": true },
+    { "system": "http://snomed.info/sct", "code": "364075005", "display": "Heart rate", "active": true },
+    { "system": "http://snomed.info/sct", "code": "431314004", "display": "Peripheral oxygen saturation", "active": true },
+    { "system": "http://snomed.info/sct", "code": "386725007", "display": "Body temperature", "active": true },
+    { "system": "http://snomed.info/sct", "code": "27113001", "display": "Body weight", "active": true },
+    { "system": "http://snomed.info/sct", "code": "50373000", "display": "Body height", "active": true },
+    { "system": "http://snomed.info/sct", "code": "86290005", "display": "Respiratory rate", "active": true },
+    { "system": "http://snomed.info/sct", "code": "43396009", "display": "Hemoglobin A1c", "active": true },
+    { "system": "http://snomed.info/sct", "code": "44054006", "display": "Diabetes mellitus", "active": true },
+    { "system": "http://snomed.info/sct", "code": "73211009", "display": "Diabetes mellitus type 2", "active": true },
+    { "system": "http://snomed.info/sct", "code": "38341003", "display": "Hypertensive disorder", "active": true },
+    { "system": "http://snomed.info/sct", "code": "195967001", "display": "Asthma", "active": true },
+    { "system": "http://snomed.info/sct", "code": "56265001", "display": "Heart disease", "active": true },
+    { "system": "http://snomed.info/sct", "code": "13645005", "display": "Chronic obstructive lung disease", "active": true },
+    { "system": "http://snomed.info/sct", "code": "271643004", "display": "Smoker", "active": true },
+    { "system": "https://dmd.nhs.uk/", "code": "317935006", "display": "Aspirin 75mg tablet (illustrative)", "active": true },
+    { "system": "https://dmd.nhs.uk/", "code": "324328004", "display": "Atorvastatin 20mg tablet (illustrative)", "active": true },
+    { "system": "https://dmd.nhs.uk/", "code": "317942005", "display": "Ramipril 2.5mg capsule (illustrative)", "active": true },
+    { "system": "https://dmd.nhs.uk/", "code": "321278003", "display": "Metformin 500mg tablet (illustrative)", "active": true },
+    { "system": "https://dmd.nhs.uk/", "code": "319713008", "display": "Salbutamol 100micrograms inhaler (illustrative)", "active": true },
+    { "system": "https://dmd.nhs.uk/", "code": "318330008", "display": "Lisinopril 10mg tablet (illustrative)", "active": true }
+  ]
+}

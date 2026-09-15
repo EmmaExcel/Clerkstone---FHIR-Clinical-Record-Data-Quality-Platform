@@ -1,0 +1,18 @@
+# Exclude from the backend Docker build context (context is the repo root).
+.git
+.github
+.venv
+.jwt
+.env
+node_modules
+frontend
+data/generated
+backend/tests
+backend/alembic
+**/__pycache__
+**/*.pyc
+.pytest_cache
+.mypy_cache
+.ruff_cache
+*.log
+.DS_Store
