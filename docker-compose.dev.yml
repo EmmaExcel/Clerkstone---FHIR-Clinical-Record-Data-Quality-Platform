@@ -1,0 +1,10 @@
+# Development extras — a DB browser (adminer) alongside the base compose services.
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+services:
+  adminer:
+    image: adminer:4
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db

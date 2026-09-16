@@ -1,0 +1,82 @@
+name: clerkstone
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: clerkstone
+      POSTGRES_PASSWORD: clerkstone
+      POSTGRES_DB: clerkstone
+    ports:
+      - "5432:5432"
+    volumes:
+      - clerkstone_pgdata:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U clerkstone -d clerkstone"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://clerkstone:clerkstone@db:5432/clerkstone
+      VALIDATOR_BASE_URL: http://validator:8080
+    depends_on:
+      db:
+        condition: service_healthy
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    read_only: true
+    tmpfs:
+      - /tmp
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: /api/v1
+      NEXT_TELEMETRY_DISABLED: "1"
+    depends_on:
+      - api
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - api
+      - web
+    ports:
+      - "80:80"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+  validator:
+    build:
+      context: ./validator
+      dockerfile: Dockerfile
+    environment:
+      UKCORE_PACKAGE_VERSION: hl7.fhir.uk.core.r4@2.4.0
+    ports:
+      - "8080:8080"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+volumes:
+  clerkstone_pgdata:
