@@ -3,6 +3,7 @@
 # reproducibility; bump VALIDATOR_VERSION deliberately, never "latest".
 ARG VALIDATOR_VERSION=6.10.4
 FROM eclipse-temurin:17-jre
+ARG VALIDATOR_VERSION
 
 WORKDIR /opt/validator
 
