@@ -25,10 +25,5 @@ export function BackendHealthStatus() {
     );
   }
 
-  return (
-    <NotificationBanner success disableAutoFocus>
-      <NotificationBanner.Title>Backend online</NotificationBanner.Title>
-      Connected to <code>{getApiBaseUrl()}</code>.
-    </NotificationBanner>
-  );
+  return null;
 }
