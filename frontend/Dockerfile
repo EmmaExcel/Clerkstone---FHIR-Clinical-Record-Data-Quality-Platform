@@ -16,6 +16,7 @@ WORKDIR /app
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
 
 RUN useradd --create-home --uid 1001 nextjs && chown -R nextjs:nextjs /app
 USER nextjs
