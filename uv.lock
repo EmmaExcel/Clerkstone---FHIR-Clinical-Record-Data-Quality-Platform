@@ -190,6 +190,7 @@ dependencies = [
     { name = "fastapi" },
     { name = "fhir-resources" },
     { name = "hl7" },
+    { name = "httpx" },
     { name = "orjson" },
     { name = "prometheus-fastapi-instrumentator" },
     { name = "pydantic" },
@@ -204,7 +205,6 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "freezegun" },
-    { name = "httpx" },
     { name = "mypy" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
@@ -221,6 +221,7 @@ requires-dist = [
     { name = "fastapi", specifier = ">=0.115" },
     { name = "fhir-resources", specifier = ">=8.0" },
     { name = "hl7", specifier = ">=0.4" },
+    { name = "httpx", specifier = ">=0.27" },
     { name = "orjson", specifier = ">=3.10" },
     { name = "prometheus-fastapi-instrumentator", specifier = ">=7.0" },
     { name = "pydantic", specifier = ">=2.7" },
@@ -235,7 +236,6 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "freezegun", specifier = ">=1.5" },
-    { name = "httpx", specifier = ">=0.27" },
     { name = "mypy", specifier = ">=1.10" },
     { name = "pytest", specifier = ">=8.2" },
     { name = "pytest-asyncio", specifier = ">=0.23" },
