@@ -1,4 +1,4 @@
-# Clerkstone — Accessibility (WCAG 2.2 AA Conformance Notes)
+# Clerkstone - Accessibility (WCAG 2.2 AA Conformance Notes)
 
 > How the front end meets WCAG 2.2 AA, and how conformance is *verified*. Accessibility is a DTAC
 > usability pillar, a mandatory requirement for all NHS digital services, and a named desirable in
@@ -11,7 +11,7 @@
   bakes in accessible components, semantic markup, and the NHS header/footer pattern.
 - **Verification:** automated (`@axe-core/playwright` in CI) **plus** a manual keyboard-only pass and
   a screen-reader pass (VoiceOver on macOS; NVDA documented for Windows). Automated checks are a
-  floor, not the ceiling — the manual passes catch what axe-core cannot.
+  floor, not the ceiling - the manual passes catch what axe-core cannot.
 
 ## 2. Success criteria → implementation map
 
@@ -35,14 +35,14 @@
 | **4.1.2 Name, Role, Value** | Native controls and NHS components with correct ARIA; `aria-live` regions on async results and on the quality-dashboard refresh. |
 | **4.1.3 Status messages** | `role="status"` / `aria-live="polite"` announces "N findings loaded", "run complete", etc. |
 
-## 3. The timeline — the accessibility-critical view
+## 3. The timeline - the accessibility-critical view
 
 The clinical timeline is the densest screen, so it gets the most attention:
 
 - Entries are a semantic list grouped by encounter, announced by type ("Encounter", "Observation").
 - Quality-flag badges are not colour-only: each shows the rule ID in text plus an icon.
 - The resource viewer's FHIRPath highlight (the "money screenshot") is **not** conveyed by colour
-  alone — the highlighted element is also announced in text and reachable via the finding's link.
+  alone - the highlighted element is also announced in text and reachable via the finding's link.
 - Charts (severity donut, top-10 rules bar) have text equivalents and a data table alternative so a
   screen reader reaches the same numbers.
 
@@ -58,9 +58,9 @@ The clinical timeline is the densest screen, so it gets the most attention:
 
 ## 5. Known limitations (honest)
 
-- Automated axe-core scans catch roughly 30–50% of WCAG issues; the manual passes are what matter,
+- Automated axe-core scans catch roughly 30-50% of WCAG issues; the manual passes are what matter,
   and they are documented here as having been performed, not merely claimed.
-- No formal accessibility audit by a specialist has been conducted — this is a portfolio prototype,
+- No formal accessibility audit by a specialist has been conducted - this is a portfolio prototype,
   and that is stated plainly rather than implying certification.
 - The `<canvas>`/chart rendering path is kept simple specifically so the same data is available as
   text/table for assistive technology.

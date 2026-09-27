@@ -1,4 +1,4 @@
-# Clerkstone — System Architecture
+# Clerkstone - System Architecture
 
 > Part of the Clerkstone governance/architecture documentation suite. Companion documents:
 > [DECISIONS.md](./DECISIONS.md) · [THREAT_MODEL.md](./THREAT_MODEL.md) · [Safety_Architecture.md](./Safety_Architecture.md)
@@ -72,12 +72,12 @@ microservices. This is a deliberate engineering choice, not a lack of ambition:
   There is no long-running queue work, so a message broker would be theatre.
 - **Operational simplicity is a feature for a portfolio project.** One image, one healthcheck set,
   one database transaction boundary. Fake microservices would add deployment complexity with no
-  scaling payoff at the 500–5,000-patient scale.
+  scaling payoff at the 500-5,000-patient scale.
 - **PostgreSQL is the only stateful service.** Everything else is stateless and horizontally
   scalable. The validator sidecar is isolated in its own container purely because it drags a JRE and
-  the reference validator jar — a heavyweight dependency a Trust would isolate the same way.
+  the reference validator jar - a heavyweight dependency a Trust would isolate the same way.
 
-The full reasoning is recorded in [DECISIONS.md — ADR-001](./DECISIONS.md).
+The full reasoning is recorded in [DECISIONS.md - ADR-001](./DECISIONS.md).
 
 ## 4. "FHIR for fidelity; relational projections for query performance"
 
@@ -105,16 +105,16 @@ flowchart LR
         M["medication_request"]
     end
 
-    R -->|"1—0..1 (derived, rebuildable)"| P
-    P -->|"1—N"| E
-    P -->|"1—N"| O
-    P -->|"1—N"| C
-    P -->|"1—N"| M
+    R -->|"1-0..1 (derived, rebuildable)"| P
+    P -->|"1-N"| E
+    P -->|"1-N"| O
+    P -->|"1-N"| C
+    P -->|"1-N"| M
 ```
 
 | What stays as a FHIR resource (JSONB) | What becomes a relational projection |
 |---|---|
-| The full resource — always | Anything filtered, joined, sorted or aggregated: identifiers, dates, codes, patient FK, status |
+| The full resource - always | Anything filtered, joined, sorted or aggregated: identifiers, dates, codes, patient FK, status |
 | Complex nested structures with no query value (`Patient.contact`, `Observation.component`, `Condition.stage`, extension trees) | Anything a quality rule needs fast access to |
 | Provenance, `meta.security`, `meta.profile` | Anything the UI lists on a page (timeline entries) |
 | Resource history / versions | Anything the audit log references |
@@ -203,14 +203,14 @@ flowchart TB
 ```
 
 The **stateless / stateful split** is deliberate: containers for stateless apps, a **managed**
-Postgres for state. Containerising the database in production is explicitly avoided — that
+Postgres for state. Containerising the database in production is explicitly avoided - that
 distinction is the kind of judgement an NHS engineering lead looks for (see
 [RUNBOOK.md](./RUNBOOK.md)).
 
 ## 7. What is deliberately left out
 
-- **No Kubernetes** — not evidenced by the target roles; docker compose is right-sized.
-- **No message queue** — ingestion is synchronous and small.
-- **No ML service** — every task is deterministic (see [DECISIONS.md — ADR-002](./DECISIONS.md)).
-- **No separate microservice split** — a modular monolith is the correct architecture at this scale.
-- **No Redis** — PostgreSQL handles the caching Clerkstone needs.
+- **No Kubernetes** - not evidenced by the target roles; docker compose is right-sized.
+- **No message queue** - ingestion is synchronous and small.
+- **No ML service** - every task is deterministic (see [DECISIONS.md - ADR-002](./DECISIONS.md)).
+- **No separate microservice split** - a modular monolith is the correct architecture at this scale.
+- **No Redis** - PostgreSQL handles the caching Clerkstone needs.

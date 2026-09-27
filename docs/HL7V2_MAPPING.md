@@ -1,4 +1,4 @@
-# Clerkstone — HL7 v2 → FHIR Mapping (ADT)
+# Clerkstone - HL7 v2 → FHIR Mapping (ADT)
 
 > How the `hl7v2` module converts HL7 v2 **ADT** messages to FHIR R4 `Patient`/`Encounter` (and, on
 > ADT^A08, a patient update). This closes the HL7/FHIR pairing named by NHS integration roles.
@@ -14,11 +14,11 @@
 
 A small, deliberately-bounded set (spec §7): enough to demonstrate a real integration, not a
 full HL7 v2 stack. After conversion, every resource flows through the **same** validation and
-quality rules as directly-ingested FHIR — that is the point: one governance path for two wire formats.
+quality rules as directly-ingested FHIR - that is the point: one governance path for two wire formats.
 
 ## 2. Segment → element mapping
 
-### 2.1 MSH — message header → provenance / meta
+### 2.1 MSH - message header → provenance / meta
 
 | HL7 field | Content | FHIR target |
 |---|---|---|
@@ -28,7 +28,7 @@ quality rules as directly-ingested FHIR — that is the point: one governance pa
 | MSH-9 | Message type (`ADT^A01`) | determines the operation applied |
 | MSH-10 | Message control ID | `Bundle.id` / idempotency key |
 
-### 2.2 PID — patient identification → `Patient`
+### 2.2 PID - patient identification → `Patient`
 
 | HL7 field | Content | FHIR target |
 |---|---|---|
@@ -36,7 +36,7 @@ quality rules as directly-ingested FHIR — that is the point: one governance pa
 | PID-5 | Patient name (family, given) | `Patient.name` (family / given) |
 | PID-7 | Date/time of birth | `Patient.birthDate` |
 | PID-8 | Administrative sex | `Patient.gender` (see mapping below) |
-| PID-11 | Address | `Patient.address` (projections store **outward postcode only** — see [DATA_MINIMISATION.md](./DATA_MINIMISATION.md)) |
+| PID-11 | Address | `Patient.address` (projections store **outward postcode only** - see [DATA_MINIMISATION.md](./DATA_MINIMISATION.md)) |
 | PID-13 | Phone/telecom | `Patient.telecom` |
 | PID-29 | Date/time of death | `Patient.deceasedDateTime` |
 | PID-30 | Patient death indicator | `Patient.deceasedBoolean` |
@@ -51,7 +51,7 @@ quality rules as directly-ingested FHIR — that is the point: one governance pa
 | `O` | `other` |
 | `U` / empty | `unknown` |
 
-### 2.3 PV1 — patient visit → `Encounter`
+### 2.3 PV1 - patient visit → `Encounter`
 
 | HL7 field | Content | FHIR target |
 |---|---|---|
@@ -87,7 +87,7 @@ quality rules as directly-ingested FHIR — that is the point: one governance pa
 Only AL1/DG1/NK1/PR1 are mapped in the MVP; other segments are ignored explicitly (not silently
 dropped) so the converter can report what it did **not** map.
 
-## 3. Worked example — ADT^A01
+## 3. Worked example - ADT^A01
 
 ### Input message
 

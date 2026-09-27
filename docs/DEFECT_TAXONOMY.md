@@ -1,4 +1,4 @@
-# Clerkstone — Taxonomy of Clinical-Data Defects
+# Clerkstone - Taxonomy of Clinical-Data Defects
 
 > **This is the core document of the project.** It catalogues the ways clinical data actually goes
 > wrong during EPR migration and integration, and maps each defect to (a) its real-world cause,
@@ -8,7 +8,7 @@
 
 The organising idea: **a data-quality gateway is only as good as its taxonomy.** A rule engine that
 checks "date is present" is noise. A rule engine that knows *"an encounter whose period ends before
-it starts is usually a local-time-vs-UTC migration artefact"* is actionable — and that is the
+it starts is usually a local-time-vs-UTC migration artefact"* is actionable - and that is the
 difference this document exists to demonstrate.
 
 ---
@@ -38,7 +38,7 @@ difference this document exists to demonstrate.
 
 ### 2.1 Timezone / migration artefacts (`TEMP-003`)
 
-**What it is.** Timestamps recorded in two different time conventions within the same record —
+**What it is.** Timestamps recorded in two different time conventions within the same record -
 typically local wall-clock time on the source system and UTC (or vice-versa) after migration. A
 record migrated from a system using local time often gains or loses an hour, or a midnight-boundary
 date flips.
@@ -115,13 +115,13 @@ moved during manual transcription or a column-format conversion.
 ```
 
 **Detecting rule:** `PHYS-001` (category: *physiological plausibility*). Systolic BP is bounded to
-30–300 mmHg, with the reference range **cited in the rule definition**. **Severity:** error
-(impossible) vs warning (implausible) — `1420` is impossible, so it is an error.
+30-300 mmHg, with the reference range **cited in the rule definition**. **Severity:** error
+(impossible) vs warning (implausible) - `1420` is impossible, so it is an error.
 
 ### 2.4 Sentinel values (`PHYS-004`)
 
 **What it is.** A clinically meaningful field holding a magic "not recorded" value instead of an
-actual measurement. `SpO₂ = 0` and `SpO₂ = 100` are the classic sentinels — `0` meaning "not
+actual measurement. `SpO₂ = 0` and `SpO₂ = 100` are the classic sentinels - `0` meaning "not
 measured" and `100` meaning "we didn't take it but needed a number". A real patient cannot have
 SpO₂ of 0 while the record is being written.
 
@@ -133,7 +133,7 @@ SpO₂ of 0 while the record is being written.
 
 **Worked example:** `valueQuantity.value = 0` on an SpO₂ observation with `interpretation: normal`.
 
-**Detecting rule:** `PHYS-004` (SpO₂ outside 40–100 %). **Severity:** error at the hard bound,
+**Detecting rule:** `PHYS-004` (SpO₂ outside 40-100 %). **Severity:** error at the hard bound,
 warning at the implausible edge. The rule's `suggested_action` names the sentinel convention so a
 reviewer can fix the *encoding*, not the patient.
 
@@ -153,12 +153,12 @@ by an Observation with `effectiveDateTime: 2023-05-01`.
 
 **Detecting rule:** `TERM-005` (category: *terminology*). **Severity:** error (post-retirement use)
 / warning (used on the retirement date). This requires the resolver to carry historical
-`effectiveTime` — which is exactly why the resolver mode and subset version are recorded in every
+`effectiveTime` - which is exactly why the resolver mode and subset version are recorded in every
 report.
 
 ### 2.6 Local-code drift (`TERM-001` / `TERM-002`)
 
-**What it is.** A code that only has meaning inside one organisation ("local code") — either an
+**What it is.** A code that only has meaning inside one organisation ("local code") - either an
 unrecognised system URI, or a plausible-looking code that is not resolvable in any bound value set.
 
 **Real-world causes.**
@@ -173,12 +173,12 @@ unrecognised system URI, or a plausible-looking code that is not resolvable in a
 SNOMED-shaped but resolves to nothing.
 
 **Detecting rules:** `TERM-001`, `TERM-002`. **Severity:** error. The finding distinguishes "not
-recognised" (system URI unknown) from "recognised system, unknown code" — two very different
+recognised" (system URI unknown) from "recognised system, unknown code" - two very different
 remediation paths.
 
 ### 2.7 Mojibake / encoding corruption (`STRUCT-004`)
 
-**What it is.** Non-ASCII characters corrupted by a wrong encoding round-trip — UTF-8 bytes decoded
+**What it is.** Non-ASCII characters corrupted by a wrong encoding round-trip - UTF-8 bytes decoded
 as Latin-1 (Windows-1252), combining characters split from their base letter, or replacement
 characters (`�`) where an encoding boundary dropped bytes.
 
@@ -198,7 +198,7 @@ byte-identical re-export, so the corruption cannot silently round-trip through i
 
 ### 2.8 Duplicate identifiers (`IDENT-005`)
 
-**What it is.** Two *different* Patient resources carrying the *same* NHS number — or one patient
+**What it is.** Two *different* Patient resources carrying the *same* NHS number - or one patient
 carrying two different NHS numbers. Both are mis-identification hazards.
 
 **Real-world causes.**
@@ -213,7 +213,7 @@ carrying two different NHS numbers. Both are mis-identification hazards.
 `logical_id`s.
 
 **Detecting rules:** `IDENT-003` (check-digit), `IDENT-005` (duplicate across patients).
-**Severity:** error. Ingestion **blocks** on a duplicate NHS number — the system refuses to persist a
+**Severity:** error. Ingestion **blocks** on a duplicate NHS number - the system refuses to persist a
 second record for an already-seen number until a human resolves it.
 
 ### 2.9 Dangling references (`REF-001` / `REF-003`)
@@ -230,7 +230,7 @@ exist in the store.
 
 **Worked example:** an Observation with `subject.reference = "Patient/missing-xyz"` where
 `missing-xyz` was never ingested. `REF-003` is the cohort variant: a patient with 0 Encounters but
-40 Observations — the observations are effectively orphaned at the *patient* level.
+40 Observations - the observations are effectively orphaned at the *patient* level.
 
 **Detecting rules:** `REF-001` (dangling reference), `REF-003` (orphaned cohort).
 **Severity:** error.
@@ -243,7 +243,7 @@ check digit.
 **Real-world causes.** Manual transcription errors (transposed digits are the classic case), OCR
 errors on a scanned record, or a source system that stored a number without validating it.
 
-**Worked example:** `943 476 5919` vs the correctly-checked `943 476 5870` — a single digit is
+**Worked example:** `943 476 5919` vs the correctly-checked `943 476 5870` - a single digit is
 wrong. The rule recomputes the modulus-11 check and flags the mismatch.
 
 **Detecting rule:** `IDENT-003`. **Severity:** error. Clerkstone generates its *own* synthetic
@@ -263,13 +263,13 @@ resolves to.
 
 **Worked example:** `code: 271649006` (Systolic blood pressure) but `display: "Heart rate"`.
 
-**Detecting rule:** `TERM-004`. **Severity:** warning — the *code* is authoritative, but the mismatch
+**Detecting rule:** `TERM-004`. **Severity:** warning - the *code* is authoritative, but the mismatch
 signals a broken mapping upstream that will mislead a human reader.
 
 ### 2.12 Duplicate records (`DUP-002`)
 
-**What it is.** Two Observations for the same patient with the same code, effective time and value —
-a true duplicate — or two Encounters with identical class and start ±5 minutes.
+**What it is.** Two Observations for the same patient with the same code, effective time and value -
+a true duplicate - or two Encounters with identical class and start ±5 minutes.
 
 **Real-world causes.**
 
@@ -279,7 +279,7 @@ a true duplicate — or two Encounters with identical class and start ±5 minute
 
 **Worked example:** two identical `heart rate = 72 bpm` Observations at `2026-09-01T09:14:00Z`.
 
-**Detecting rule:** `DUP-002` (category: *duplication*). **Severity:** warning — duplicates inflate
+**Detecting rule:** `DUP-002` (category: *duplication*). **Severity:** warning - duplicates inflate
 counts and break cohort analytics even though no single record is "wrong".
 
 ### 2.13 Cohort completeness gaps (`COH-001` / `COH-002`)
@@ -298,7 +298,7 @@ HbA1c observation in the last 24 months.
 active`, and zero HbA1c Observations within 24 months of the query date.
 
 **Detecting rules:** `COH-001` (encounter with zero observations), `COH-002` (diabetes without
-recent HbA1c). **Severity:** info/warning — this is a *population-level* signal that a Trust uses to
+recent HbA1c). **Severity:** info/warning - this is a *population-level* signal that a Trust uses to
 find feed gaps, and it is exactly the kind of query J1's "handling data quality issues" means.
 
 ### 2.14 Structural corruption (`STRUCT-001` / `PROF-002`)
@@ -353,6 +353,6 @@ committed golden JSON file.
 ## 4. The honest limit of a taxonomy
 
 > The quality engine detects the defects this taxonomy names. It has **no coverage guarantee** against
-> defects not anticipated here — which is why the ruleset is versioned and every report states which
+> defects not anticipated here - which is why the ruleset is versioned and every report states which
 > version ran. A taxonomy is a living artefact: each new observed defect is a new rule with a new
 > fixture, and a new ruleset version.

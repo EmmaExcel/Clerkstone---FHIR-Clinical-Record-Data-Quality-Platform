@@ -1,4 +1,4 @@
-# Clerkstone — Privacy Statement (UK GDPR / DPA 2018)
+# Clerkstone - Privacy Statement (UK GDPR / DPA 2018)
 
 > The data-protection position for Clerkstone. Companion documents: [DATA_MINIMISATION.md](./DATA_MINIMISATION.md)
 > · [DATA_LICENCES.md](./DATA_LICENCES.md) · [DTAC_self_assessment.md](./DTAC_self_assessment.md).
@@ -15,7 +15,7 @@ number, no real address, and no real clinical event anywhere in the system. Cons
   because there is no personal data and no identifiable living individual.
 - **No lawful basis is required**, because no processing of personal data occurs.
 
-Saying this *correctly* — that a system which holds no personal data needs no lawful basis — is
+Saying this *correctly* - that a system which holds no personal data needs no lawful basis - is
 itself the awareness the target roles test ("processes for DPIA and cyber security assessments").
 
 ## 2. What "personal data" would mean here, and why it is absent
@@ -39,11 +39,11 @@ analysis would be:
 
 | Element | Position for real data |
 |---|---|
-| **Lawful basis (Art. 6)** | **Art. 6(1)(e)** — processing necessary for the performance of a task carried out in the public interest or in the exercise of official authority (an NHS Trust's statutory functions), relying on the Health and Social Care Act 2012 / National Health Service Act 2006. |
-| **Special-category data (Art. 9)** | **Art. 9(2)(h)** — processing necessary for the provision of health or social care or treatment, per the DPA 2018 Schedule 1, Part 1. |
+| **Lawful basis (Art. 6)** | **Art. 6(1)(e)** - processing necessary for the performance of a task carried out in the public interest or in the exercise of official authority (an NHS Trust's statutory functions), relying on the Health and Social Care Act 2012 / National Health Service Act 2006. |
+| **Special-category data (Art. 9)** | **Art. 9(2)(h)** - processing necessary for the provision of health or social care or treatment, per the DPA 2018 Schedule 1, Part 1. |
 | **DPIA** | A **Data Protection Impact Assessment** would be **mandatory** (Art. 35) for processing health data at scale, and would be produced before any go-live. |
 | **Controller** | The relevant NHS organisation (Trust), with Clerkstone as **processor** under a Data Processing Agreement. |
-| **Caldicott** | Caldicott Principles and the National Data Guardian's standards would apply, including Principle 5 (minimum necessary) — the basis of [DATA_MINIMISATION.md](./DATA_MINIMISATION.md). |
+| **Caldicott** | Caldicott Principles and the National Data Guardian's standards would apply, including Principle 5 (minimum necessary) - the basis of [DATA_MINIMISATION.md](./DATA_MINIMISATION.md). |
 
 This section is included *not* to claim Clerkstone has real-data readiness, but to demonstrate that
 the author knows the correct analysis and would apply it at the point any real data were ever in
@@ -54,11 +54,11 @@ scope.
 Even though no personal data is held, Clerkstone implements the controls a real system would need,
 so the *method* is on display:
 
-- **Authentication** — JWT RS256, 15-min access tokens, validated `iss`/`aud`/`exp`.
-- **Authorisation** — three roles, field-level scoping, deny-by-default, exhaustive matrix test.
-- **Audit** — append-only, hash-chained audit log covering reads and writes.
-- **Minimisation** — outward postcode only; salted-hashed IP; per-field justification.
-- **Transparency** — `synthetic_data_notice` in every API response, a permanent UI banner, and the
+- **Authentication** - JWT RS256, 15-min access tokens, validated `iss`/`aud`/`exp`.
+- **Authorisation** - three roles, field-level scoping, deny-by-default, exhaustive matrix test.
+- **Audit** - append-only, hash-chained audit log covering reads and writes.
+- **Minimisation** - outward postcode only; salted-hashed IP; per-field justification.
+- **Transparency** - `synthetic_data_notice` in every API response, a permanent UI banner, and the
   `X-Clerkstone-Data-Class: synthetic` header.
 
 ## 5. Scope boundary (explicit)
@@ -66,4 +66,4 @@ so the *method* is on display:
 - This document covers **Clerkstone as a portfolio prototype on synthetic data**.
 - It is **not** a privacy policy for a live service; no live service exists.
 - If any real data were ever in scope, the DPIA, DPA, and CSO-signed clinical safety case would be
-  produced **before** any processing — and the synthetic-data framing would be removed, not retained.
+  produced **before** any processing - and the synthetic-data framing would be removed, not retained.

@@ -1,4 +1,4 @@
-# Clerkstone — Threat Model (STRIDE)
+# Clerkstone - Threat Model (STRIDE)
 
 > Applies Microsoft's STRIDE to each runtime component and maps mitigations to the controls in the
 > specification §19. Companion documents: [Hazard_Log.md](./Hazard_Log.md) ·
@@ -86,7 +86,7 @@ SQL); outbound SSRF is addressed by allow-listing the terminology base URL (neve
 | **R**epudiation | Validation outcome unattributed | `$validate` result is returned to the caller as an `OperationOutcome` and recorded in the audit log (→ *Audit logging*) |
 | **I**nformation Disclosure | Validator logs leaking resource content | Validator output scoped to `OperationOutcome`, not raw resources; no secrets in the image (→ *Docker hardening*) |
 | **D**enial of Service | Validator down stalls ingestion | `/ready` checks validator reachability; request timeout (`VALIDATOR_TIMEOUT_SECONDS`); ingest reports partial status (→ *Observability*) |
-| **E**levation of Privilege | Validator influencing write decisions | The validator is read-only w.r.t. storage — it only returns an `OperationOutcome`; writes are API-side (→ design) |
+| **E**levation of Privilege | Validator influencing write decisions | The validator is read-only w.r.t. storage - it only returns an `OperationOutcome`; writes are API-side (→ design) |
 
 ## 6. Terminology source
 
@@ -97,7 +97,7 @@ SQL); outbound SSRF is addressed by allow-listing the terminology base URL (neve
 | **R**epudiation | "Which resolver ran?" | Run summary states resolver mode (`local-subset` vs `nhse-live`) and version (→ *Audit logging*, CLK-06) |
 | **I**nformation Disclosure | Leaking API key | Key held in secret store only, never in env/ARG/layer; gitleaks + Trivy scan (→ *Secrets management*) |
 | **D**enial of Service | Live server slow / down | Timeout, retry, circuit-breaker (`TERMINOLOGY_CIRCUIT_BREAKER_THRESHOLD`); explicit `unresolved`, never silent pass (→ CLK-06) |
-| **E**levation of Privilege | N/A — read-only lookups | Adapter exposes only `$lookup`/`$expand`/`$validate-code`; no write path to the terminology source |
+| **E**levation of Privilege | N/A - read-only lookups | Adapter exposes only `$lookup`/`$expand`/`$validate-code`; no write path to the terminology source |
 
 ---
 
@@ -112,5 +112,5 @@ SQL); outbound SSRF is addressed by allow-listing the terminology base URL (neve
 | Denial of Service | *Input validation* (caps), *Observability* (readiness, timeouts), §20 rate limiting |
 | Elevation of Privilege | *Authorisation / RBAC* (deny-by-default, single dependency) |
 
-**Out of scope for the prototype:** a SIEM, a WAF, and managed-key infrastructure — these are named
+**Out of scope for the prototype:** a SIEM, a WAF, and managed-key infrastructure - these are named
 as what a *real* Trust deployment would additionally require, not silently claimed as present.

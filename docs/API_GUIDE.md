@@ -1,4 +1,4 @@
-# Clerkstone — API Guide
+# Clerkstone - API Guide
 
 > Reference for every endpoint in the specification §13. Base path `/api/v1`. All responses are
 > JSON. All errors are FHIR `OperationOutcome`. All requests require `Authorization: Bearer <jwt>`
@@ -7,9 +7,9 @@
 
 **Conventions**
 
-- **Errors are `OperationOutcome`.** Every failure — auth, authz, validation, not-found — returns a
+- **Errors are `OperationOutcome`.** Every failure - auth, authz, validation, not-found - returns a
   FHIR `OperationOutcome` with a machine-readable `issue.code`, a human message, and an `expression`
-  pointing at the offending element (see [DECISIONS.md — ADR-005](./DECISIONS.md)).
+  pointing at the offending element (see [DECISIONS.md - ADR-005](./DECISIONS.md)).
 - **Field-level scoping** applies on read endpoints: a role that may read demographics but not
   observations will receive demographics only, and the omission is audited.
 - **Pagination** uses `_count` with a hard server-side maximum (`MAX_PAGE_SIZE`, default 200).
@@ -32,7 +32,7 @@
 
 | | |
 |---|---|
-| **Purpose** | Liveness probe — process is up. |
+| **Purpose** | Liveness probe - process is up. |
 | **Min role** | none |
 
 ```http
@@ -47,7 +47,7 @@ GET /api/v1/health
 
 | | |
 |---|---|
-| **Purpose** | Readiness — database **and** validator reachable. |
+| **Purpose** | Readiness - database **and** validator reachable. |
 | **Min role** | none |
 
 ```http
@@ -135,7 +135,7 @@ POST /api/v1/fhir/$validate
 Authorization: Bearer <jwt>
 ```
 
-**Request** — a Patient missing `identifier`:
+**Request** - a Patient missing `identifier`:
 
 ```json
 { "resourceType": "Patient", "name": [{ "family": "Okonkwo" }], "birthDate": "2031-04-02" }
@@ -194,7 +194,7 @@ GET /api/v1/patients?family=Okonkwo&_count=20
 
 | | |
 |---|---|
-| **Purpose** | Patient summary — demographics plus per-type counts. |
+| **Purpose** | Patient summary - demographics plus per-type counts. |
 | **Min role** | reader |
 
 ### GET `/patients/{id}/timeline`
@@ -389,8 +389,8 @@ GET /api/v1/quality/runs/4d0b…/findings?severity=error
 | **Purpose** | Record a resolution (`resolved` or `accepted_risk`), with attribution. |
 | **Min role** | analyst |
 
-> The review workflow is an explicit, named, auditable verb — not a generic PATCH — by design
-> ([DECISIONS.md — ADR-005](./DECISIONS.md)).
+> The review workflow is an explicit, named, auditable verb - not a generic PATCH - by design
+> ([DECISIONS.md - ADR-005](./DECISIONS.md)).
 
 ## 7. Governance
 
@@ -427,5 +427,5 @@ GET /api/v1/audit/events?actor=alice&action=read.patient&_count=50
 | 429 | `throttled` | Rate limit exceeded (`RATE_LIMIT_PER_MINUTE`) |
 | 500 | `exception` | Unhandled server error (logged with correlation ID; never exposes a stack trace) |
 
-Every `500` carries the `X-Request-Id` so the operator can find it in the structured logs — see
+Every `500` carries the `X-Request-Id` so the operator can find it in the structured logs - see
 [RUNBOOK.md](./RUNBOOK.md).

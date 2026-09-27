@@ -1,4 +1,4 @@
-# Clerkstone — Architecture Decision Records (ADRs)
+# Clerkstone - Architecture Decision Records (ADRs)
 
 This file records the significant, non-obvious architecture decisions for Clerkstone. Each entry
 follows the standard ADR shape: **Context**, **Decision**, **Consequences**. The five mandatory
@@ -9,15 +9,15 @@ Status vocabulary: **Accepted** (in force), **Superseded** (see the "Superseded 
 
 ---
 
-## ADR-001 — Modular monolith over microservices
+## ADR-001 - Modular monolith over microservices
 
 - **Status:** Accepted
 
 ### Context
 
-Clerkstone has four distinct domain concerns — FHIR ingest/search, the quality rule engine,
-terminology resolution, and HL7 v2 conversion — each of which *could* be its own service. At the
-target scale (500–5,000 synthetic patients, synchronous ingestion, single operator) a microservice
+Clerkstone has four distinct domain concerns - FHIR ingest/search, the quality rule engine,
+terminology resolution, and HL7 v2 conversion - each of which *could* be its own service. At the
+target scale (500-5,000 synthetic patients, synchronous ingestion, single operator) a microservice
 fleet would add network hops, deployment complexity, and distributed-transaction problems with no
 scaling payoff. A portfolio project also has to be *demonstrably correct*, and a monolith is far
 easier to test end-to-end.
@@ -31,30 +31,30 @@ reasons. PostgreSQL is the only stateful service.
 
 The seams are the interfaces, not the network:
 
-- `TerminologyClient` protocol (ADR-004) — swap backends without touching business logic.
-- `Rule` ABC + `registry.py` — rules are discoverable, versioned, independently testable modules.
-- The bundle transaction layer — ingestion semantics live behind one function, not one process.
+- `TerminologyClient` protocol (ADR-004) - swap backends without touching business logic.
+- `Rule` ABC + `registry.py` - rules are discoverable, versioned, independently testable modules.
+- The bundle transaction layer - ingestion semantics live behind one function, not one process.
 
 ### Consequences
 
 - **Positive:** single transaction boundary for ingest→persist→quality-run; trivial local dev
   (`make dev`); one image to build and scan; no distributed-tracing requirement.
 - **Positive:** if load ever justified extraction, any module can be lifted behind its existing
-  interface — the ADR already made the cut points explicit.
+  interface - the ADR already made the cut points explicit.
 - **Negative:** a single process is a single failure domain; mitigated by running multiple uvicorn
   workers and keeping state out of the app (managed Postgres, stateless workers).
 
 ---
 
-## ADR-002 — No machine learning in this project
+## ADR-002 - No machine learning in this project
 
 - **Status:** Accepted
 
 ### Context
 
 An earlier project proposal (Source C) suggested "a PyTorch model for a non-diagnostic task such as
-predicting whether a record needs a data-quality review." Every task Clerkstone performs —
-validation, quality rules, terminology resolution, timeline assembly — is **deterministic**. A
+predicting whether a record needs a data-quality review." Every task Clerkstone performs -
+validation, quality rules, terminology resolution, timeline assembly - is **deterministic**. A
 record "needs review" precisely when it *fails a rule*; a classifier predicting what the rule engine
 already knows is decoration.
 
@@ -64,16 +64,16 @@ already knows is decoration.
 versions, severities, FHIRPath locations, and per-rule tests. This is the correct engineering
 answer, not a limitation, for four reasons:
 
-1. **Determinism** — in a clinical-safety context, the requirement is "same input ⇒ same output",
+1. **Determinism** - in a clinical-safety context, the requirement is "same input ⇒ same output",
    not "probable output".
-2. **Testability** — every rule has positive, negative and boundary unit tests plus golden-file
+2. **Testability** - every rule has positive, negative and boundary unit tests plus golden-file
    regression fixtures. A learned model cannot be asserted the same way.
-3. **Explainability** — a finding carries a human-readable message, a FHIRPath expression pointing at
+3. **Explainability** - a finding carries a human-readable message, a FHIRPath expression pointing at
    the offending element, and a `suggested_action` written from the rule's perspective.
-4. **Auditability** — the ruleset is versioned and every report states which version ran.
+4. **Auditability** - the ruleset is versioned and every report states which version ran.
 
-The one defensible ML addition — a **triage prioritisation model** that ranks findings by predicted
-human-review effort — is explicitly deferred to a later project (P5). It cannot exist until the
+The one defensible ML addition - a **triage prioritisation model** that ranks findings by predicted
+human-review effort - is explicitly deferred to a later project (P5). It cannot exist until the
 review workflow (V2) has generated labelled timing data, which is the honest reason to defer it.
 
 ### Consequences
@@ -85,15 +85,15 @@ review workflow (V2) has generated labelled timing data, which is the honest rea
 
 ---
 
-## ADR-003 — JSONB source of truth + relational projections
+## ADR-003 - JSONB source of truth + relational projections
 
 - **Status:** Accepted
 
 ### Context
 
 FHIR resources are documents, and PostgreSQL JSONB is the correct store for documents. But the
-queries Clerkstone needs — timeline joins, cohort completeness, duplication detection, physiological
-range scans — are relational queries over identifiers, dates and codes, and JSONB alone would make
+queries Clerkstone needs - timeline joins, cohort completeness, duplication detection, physiological
+range scans - are relational queries over identifiers, dates and codes, and JSONB alone would make
 them slow and unindexable.
 
 ### Decision
@@ -112,7 +112,7 @@ Adopt a **hybrid** schema (spec §12):
 
 - **Positive:** full fidelity (re-emit the resource byte-for-byte on `$export`) *and* indexed query
   performance in one database.
-- **Positive:** no dual-write correctness burden — the projection is a function of the resource, and
+- **Positive:** no dual-write correctness burden - the projection is a function of the resource, and
   the rebuild operation enforces that invariant.
 - **Negative:** two representations can drift if a write path bypasses the projection builder; this is
   mitigated by routing all writes through `domain/fhir/projections.py` and by the rebuild invariant
@@ -120,7 +120,7 @@ Adopt a **hybrid** schema (spec §12):
 
 ---
 
-## ADR-004 — Terminology resolution behind a pluggable adapter (DI seam)
+## ADR-004 - Terminology resolution behind a pluggable adapter (DI seam)
 
 - **Status:** Accepted
 
@@ -136,10 +136,10 @@ offline today. Hard-coding either backend would couple business logic to a speci
 Define a `TerminologyClient` protocol (`backend/app/domain/terminology/base.py`) with three
 implementations behind it:
 
-- `local` — a SQLite cache built from a licensed TRUD/dm+d subset (runs offline, fully tested).
-- `nhse` — an adapter for the NHS England Terminology Server (`$lookup`, `$expand`,
+- `local` - a SQLite cache built from a licensed TRUD/dm+d subset (runs offline, fully tested).
+- `nhse` - an adapter for the NHS England Terminology Server (`$lookup`, `$expand`,
   `$validate-code`) with retry, timeout, circuit-breaker and rate-limit respect.
-- `offline-stub` — for tests and demos with no data present.
+- `offline-stub` - for tests and demos with no data present.
 
 The active backend is selected by one environment variable (`TERMINOLOGY_BACKEND=local|nhse|offline-stub`),
 and the TERM-* rules call only the protocol. `nhse` is tested against **recorded HTTP fixtures**
@@ -148,7 +148,7 @@ and the TERM-* rules call only the protocol. `nhse` is tested against **recorded
 ### Consequences
 
 - **Positive:** the demo and CI work offline today, and the live server can be swapped in later by
-  changing configuration — not code. This is the dependency-injection pattern the target roles name
+  changing configuration - not code. This is the dependency-injection pattern the target roles name
   explicitly.
 - **Positive:** the quality report records *which* backend and subset version ran, so findings are
   reproducible.
@@ -158,7 +158,7 @@ and the TERM-* rules call only the protocol. `nhse` is tested against **recorded
 
 ---
 
-## ADR-005 — Designing for agentic consumption
+## ADR-005 - Designing for agentic consumption
 
 - **Status:** Accepted
 
@@ -174,19 +174,19 @@ state.
 
 The API obeys seven properties (also asserted by `tests/api/test_agent_consumability.py`):
 
-1. **Stable, opaque identifiers** — every resource and every finding has an immutable `id` that an
+1. **Stable, opaque identifiers** - every resource and every finding has an immutable `id` that an
    agent can reference reliably across turns.
-2. **Predictable, typed errors** — every error is an `OperationOutcome` with a machine-readable
+2. **Predictable, typed errors** - every error is an `OperationOutcome` with a machine-readable
    `issue.code`, a human message, and an `expression` pointing at the offending element.
-3. **Read-only by default; writes behind explicit verbs** — `POST /quality/findings/{id}/assign`,
+3. **Read-only by default; writes behind explicit verbs** - `POST /quality/findings/{id}/assign`,
    not `PATCH /findings/{id}` with an arbitrary body. Narrow, named, auditable operations map 1:1 to
    MCP tools.
-4. **Idempotency keys on every write** — a retrying agent cannot double-create.
-5. **Field-level scoping** — RBAC can express "this role may read demographics but not observations",
+4. **Idempotency keys on every write** - a retrying agent cannot double-create.
+5. **Field-level scoping** - RBAC can express "this role may read demographics but not observations",
    because P4's tool proxies will enforce exactly that.
-6. **Audit every read, not just writes** — an agent reading 40 patient records in a loop must be
+6. **Audit every read, not just writes** - an agent reading 40 patient records in a loop must be
    visible in the audit trail.
-7. **Pagination and `_count` limits with hard server-side maxima** — an agent cannot accidentally
+7. **Pagination and `_count` limits with hard server-side maxima** - an agent cannot accidentally
    pull the whole database into a context window.
 
 ### Consequences
@@ -200,7 +200,7 @@ The API obeys seven properties (also asserted by `tests/api/test_agent_consumabi
 
 ---
 
-## ADR-006 — FHIR validation in a sidecar container, not a library
+## ADR-006 - FHIR validation in a sidecar container, not a library
 
 - **Status:** Accepted
 
@@ -212,7 +212,7 @@ and entangle two very different lifecycles.
 
 ### Decision
 
-Run the validator as a **sidecar container** (`validator/` — JRE + HL7 validator jar + UK Core
+Run the validator as a **sidecar container** (`validator/` - JRE + HL7 validator jar + UK Core
 package) that the API calls over HTTP for `$validate`. The API treats it as a black box producing
 `OperationOutcome`.
 
@@ -225,7 +225,7 @@ package) that the API calls over HTTP for `$validate`. The API treats it as a bl
 
 ---
 
-## ADR-007 — Append-only, hash-chained audit log
+## ADR-007 - Append-only, hash-chained audit log
 
 - **Status:** Accepted
 
@@ -245,7 +245,7 @@ hashed IP.
 
 ### Consequences
 
-- **Positive:** tamper-evidence is provable in a demo and in CI — 40 lines of code that separate an
+- **Positive:** tamper-evidence is provable in a demo and in CI - 40 lines of code that separate an
   audit log from an audit trail.
 - **Negative:** append-only storage grows monotonically and the chain makes row deletion impossible
   by design; acceptable for a portfolio prototype, and the correct trade-off for a real system.

@@ -1,4 +1,4 @@
-# Clerkstone — Operational Runbook
+# Clerkstone - Operational Runbook
 
 > Day-2 operations for Clerkstone. Companion documents: [architecture.md](./architecture.md) ·
 > [THREAT_MODEL.md](./THREAT_MODEL.md) · [API_GUIDE.md](./API_GUIDE.md).
@@ -26,7 +26,7 @@ are for state. Never containerise the database in production.
 | Public (deploy it) | Local only (never deploy) |
 |---|---|
 | Frontend + API on the **20-patient committed fixture** | The 500- and 5,000-patient generated datasets |
-| OpenAPI docs (`/docs`) — read-only | The Simulacrum extract (5.22 GB, form-gated) |
+| OpenAPI docs (`/docs`) - read-only | The Simulacrum extract (5.22 GB, form-gated) |
 | Read-only demo credentials (`demo-reader` / `demo-analyst`) | Any TRUD-derived SNOMED CT subset |
 | Static docs site (GitHub Pages) | MIMIC-IV Demo data (link, don't host) |
 | Container images on GHCR | **Your JWT private keys** |
@@ -44,7 +44,7 @@ GitHub push ─▶ GitHub Actions
                         ▼
       Deploy (Fly.io / Render / £5 Hetzner VPS)
       ┌─────────────────────────────────────────┐
-      │ Caddy/Nginx — TLS (Let's Encrypt),      │
+      │ Caddy/Nginx - TLS (Let's Encrypt),      │
       │ rate limiting, security headers         │
       │   ├─ web      (Next.js standalone)      │
       │   ├─ api      (uvicorn, 2 workers)      │
@@ -65,10 +65,10 @@ GitHub push ─▶ GitHub Actions
 
 Secrets are **injected at runtime**, never baked into images:
 
-- `JWT_PRIVATE_KEY_PATH` / `JWT_PUBLIC_KEY_PATH` — from `/run/secrets/…`
-- `DATABASE_URL` — managed Postgres connection string
-- `AUDIT_HASH_SALT` — secret store only
-- `TERMINOLOGY_NHSE_API_KEY` — only if using `TERMINOLOGY_BACKEND=nhse`
+- `JWT_PRIVATE_KEY_PATH` / `JWT_PUBLIC_KEY_PATH` - from `/run/secrets/…`
+- `DATABASE_URL` - managed Postgres connection string
+- `AUDIT_HASH_SALT` - secret store only
+- `TERMINOLOGY_NHSE_API_KEY` - only if using `TERMINOLOGY_BACKEND=nhse`
 - `.env.example` is committed; `.env` is gitignored; `make check-secrets` runs gitleaks.
 
 ## 3. Investigate a failed quality run
@@ -76,7 +76,7 @@ Secrets are **injected at runtime**, never baked into images:
 ### 3.1 Recognise the failure
 
 A quality run has status `running | complete | failed`. A **failed** run means the run itself did not
-complete (exception, validator unavailable, DB timeout) — *not* that findings were produced. Findings
+complete (exception, validator unavailable, DB timeout) - *not* that findings were produced. Findings
 are the normal, expected output of a **complete** run.
 
 ### 3.2 Steps, in order
@@ -103,11 +103,11 @@ are the normal, expected output of a **complete** run.
 
 5. **Re-run idempotently.** A quality run is read-only against the resource store (it only writes
    `dq_run`/`dq_finding`). Re-running with the same `scope` and `ruleset_version` must produce the
-   same findings — if it does not, that is a determinism regression and a release blocker.
+   same findings - if it does not, that is a determinism regression and a release blocker.
 
 ### 3.3 Determinism check (the key diagnostic)
 
-The engine is deterministic (see [DECISIONS.md — ADR-002](./DECISIONS.md)). If two runs with the
+The engine is deterministic (see [DECISIONS.md - ADR-002](./DECISIONS.md)). If two runs with the
 same scope and ruleset version differ, suspect: (a) a rule reading a wall-clock value instead of the
 resource's own dates, (b) an unordered iteration leaking into the output, or (c) a changed ruleset
 version between runs. The golden-file suite is the regression net for all three.
@@ -128,7 +128,7 @@ half-written resource state to recover. To recover a *bad* bundle:
 ### 4.2 Restore the database
 
 - **Local/dev:** `make migrate` applies Alembic migrations forward; `make rebuild-projections`
-  reconstructs projections from `fhir_resource` (the source of truth) — use this after any
+  reconstructs projections from `fhir_resource` (the source of truth) - use this after any
   projection drift.
 - **Prod:** restore the managed Postgres from its point-in-time backup (managed service), then
   `make rebuild-projections` and `make verify-audit` to confirm integrity post-restore.
@@ -153,7 +153,7 @@ JWT is RS256 with a short-lived access token (15 min) and a separate refresh pat
 4. Remove the old public key from the trust set once the max token TTL has elapsed.
 5. Restart the API; `GET /health` then one authed read as a smoke check.
 
-Because access tokens are 15 minutes, key rotation is fully drained within 15 minutes — the point of
+Because access tokens are 15 minutes, key rotation is fully drained within 15 minutes - the point of
 the short TTL.
 
 ### 5.2 Other secrets
@@ -188,4 +188,4 @@ Prevent:    (new rule? new fixture? new monitor?)
 ```
 
 If the incident revealed a data defect the taxonomy did not anticipate, the remediation is a **new
-rule + fixture + ruleset version** — see [DEFECT_TAXONOMY.md](./DEFECT_TAXONOMY.md) §4.
+rule + fixture + ruleset version** - see [DEFECT_TAXONOMY.md](./DEFECT_TAXONOMY.md) §4.

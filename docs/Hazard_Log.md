@@ -1,4 +1,4 @@
-# Clerkstone — Hazard Log (DCB0129-informed)
+# Clerkstone - Hazard Log (DCB0129-informed)
 
 > ⚠️ **Portfolio artefact.** This log is *informed by* DCB0129 (Clinical Risk Management: its
 > Application in the Manufacture of Health IT Systems) and DCB0160 (Clinical Risk Management: its
@@ -9,11 +9,11 @@
 
 A compliant CSCR must be produced and signed by a **registered Clinical Safety Officer (CSO)**.
 Clerkstone has no CSO and is not a medical device; it is a portfolio prototype operating exclusively
-on **synthetic data**. The hazards below are therefore recorded to *demonstrate the method* — hazard
-identification, likelihood/severity scoring, control identification, and residual-risk assessment —
+on **synthetic data**. The hazards below are therefore recorded to *demonstrate the method* - hazard
+identification, likelihood/severity scoring, control identification, and residual-risk assessment -
 not to assert clinical-safety compliance.
 
-**Severity** is scored 1–4 (minor → catastrophic). **Likelihood** is scored 1–4 (remote → frequent).
+**Severity** is scored 1-4 (minor → catastrophic). **Likelihood** is scored 1-4 (remote → frequent).
 Initial risk = pre-controls; residual risk = post-controls. **Target residual ≤ Moderate** for any
 hazard that is still open.
 
@@ -21,19 +21,19 @@ hazard that is still open.
 
 | Score | Meaning |
 |---|---|
-| 1 | Minor — no patient harm, minor inconvenience |
-| 2 | Moderate — short-term or reversible harm |
-| 3 | Major — serious harm, delayed or wrong clinical decision |
-| 4 | Catastrophic — permanent harm or death (hypothetical here — no live data) |
+| 1 | Minor - no patient harm, minor inconvenience |
+| 2 | Moderate - short-term or reversible harm |
+| 3 | Major - serious harm, delayed or wrong clinical decision |
+| 4 | Catastrophic - permanent harm or death (hypothetical here - no live data) |
 
 ### Likelihood scale
 
 | Score | Meaning |
 |---|---|
-| 1 | Remote — would require multiple independent failures |
-| 2 | Unlikely — plausible but not expected |
-| 3 | Possible — could occur under normal use |
-| 4 | Frequent — expected under normal use |
+| 1 | Remote - would require multiple independent failures |
+| 2 | Unlikely - plausible but not expected |
+| 3 | Possible - could occur under normal use |
+| 4 | Frequent - expected under normal use |
 
 ### Risk matrix
 
@@ -48,7 +48,7 @@ hazard that is still open.
 
 ## Hazard register
 
-### CLK-01 — Quality rule produces a false negative (a defective record passes as clean)
+### CLK-01 - Quality rule produces a false negative (a defective record passes as clean)
 
 | Field | Detail |
 |---|---|
@@ -59,7 +59,7 @@ hazard that is still open.
 | **Residual risk (S×L)** | 3 × 2 = **Moderate** |
 | **Status** | Closed |
 
-### CLK-02 — Quality rule produces a false positive (a valid record is flagged)
+### CLK-02 - Quality rule produces a false positive (a valid record is flagged)
 
 | Field | Detail |
 |---|---|
@@ -70,7 +70,7 @@ hazard that is still open.
 | **Residual risk (S×L)** | 2 × 2 = **Low** |
 | **Status** | Closed |
 
-### CLK-03 — Patient mis-identification (projections link observations to the wrong patient)
+### CLK-03 - Patient mis-identification (projections link observations to the wrong patient)
 
 | Field | Detail |
 |---|---|
@@ -81,7 +81,7 @@ hazard that is still open.
 | **Residual risk (S×L)** | 4 × 1 = **Moderate** |
 | **Status** | Active |
 
-### CLK-04 — Authorisation bypass (reader reaches a write route, or reads another's scoped data)
+### CLK-04 - Authorisation bypass (reader reaches a write route, or reads another's scoped data)
 
 | Field | Detail |
 |---|---|
@@ -92,7 +92,7 @@ hazard that is still open.
 | **Residual risk (S×L)** | 4 × 1 = **Moderate** |
 | **Status** | Active |
 
-### CLK-05 — Audit log tampering or loss (the audit trail is edited or silently truncated)
+### CLK-05 - Audit log tampering or loss (the audit trail is edited or silently truncated)
 
 | Field | Detail |
 |---|---|
@@ -103,7 +103,7 @@ hazard that is still open.
 | **Residual risk (S×L)** | 4 × 1 = **Moderate** |
 | **Status** | Active |
 
-### CLK-06 — Terminology resolution silently fails and codes are treated as valid
+### CLK-06 - Terminology resolution silently fails and codes are treated as valid
 
 | Field | Detail |
 |---|---|
@@ -114,7 +114,7 @@ hazard that is still open.
 | **Residual risk (S×L)** | 3 × 2 = **Moderate** |
 | **Status** | Closed |
 
-### CLK-07 — Synthetic data mistaken for real by a viewer or downstream consumer
+### CLK-07 - Synthetic data mistaken for real by a viewer or downstream consumer
 
 | Field | Detail |
 |---|---|
@@ -125,14 +125,14 @@ hazard that is still open.
 | **Residual risk (S×L)** | 3 × 1 = **Low** |
 | **Status** | Closed |
 
-### CLK-08 — Encoding corruption of non-ASCII names/addresses during ingestion
+### CLK-08 - Encoding corruption of non-ASCII names/addresses during ingestion
 
 | Field | Detail |
 |---|---|
 | **Hazard** | Non-ASCII names/addresses are mis-decoded (mojibake / combining-character corruption) during ingestion. |
 | **Potential clinical consequence** | Mis-rendered patient identity; search failures; potential mis-identification. |
 | **Initial risk (S×L)** | 2 × 3 = **Moderate** |
-| **Controls (design + process)** | (a) Explicit UTF-8 enforcement at every boundary; (b) `STRUCT-004` rule detects mojibake patterns and combining-character anomalies; (c) round-trip test asserting byte-identical re-export. Note: this hazard is **not hypothetical** — NHS England documents incorrectly decoded special characters as a known issue in their own synthetic notes dataset. |
+| **Controls (design + process)** | (a) Explicit UTF-8 enforcement at every boundary; (b) `STRUCT-004` rule detects mojibake patterns and combining-character anomalies; (c) round-trip test asserting byte-identical re-export. Note: this hazard is **not hypothetical** - NHS England documents incorrectly decoded special characters as a known issue in their own synthetic notes dataset. |
 | **Residual risk (S×L)** | 2 × 2 = **Low** |
 | **Status** | Closed |
 
@@ -160,7 +160,7 @@ deployment, all Active hazards would require a CSO's sign-off before go-live.
 
 | Reviewed | By | Outcome |
 |---|---|---|
-| ⟨date⟩ | ⟨name — portfolio author⟩ | Initial draft; hazards CLK-01…CLK-08 recorded from the defect-injection and control design in the specification §19. |
+| ⟨date⟩ | ⟨name - portfolio author⟩ | Initial draft; hazards CLK-01…CLK-08 recorded from the defect-injection and control design in the specification §19. |
 
 > **Reminder:** this document satisfies the *method* requirement of DCB0129/DCB0160 awareness. It is
 > not, and cannot be, a compliant CSCR without a registered CSO.

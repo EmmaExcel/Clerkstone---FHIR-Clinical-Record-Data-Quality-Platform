@@ -1,4 +1,4 @@
-# Clerkstone — Governance & Architecture Documentation
+# Clerkstone - Governance & Architecture Documentation
 
 > Index of the documentation suite. Clerkstone is a FHIR R4 clinical record & data-quality platform
 > (personal NHS portfolio project). All patient data is **synthetic**; the project is a prototype and
@@ -53,10 +53,10 @@
 
 ## Reading order for an interviewer
 
-1. [architecture.md](./architecture.md) — what it is and why.
-2. [DEFECT_TAXONOMY.md](./DEFECT_TAXONOMY.md) — the intellectual core.
-3. [DECISIONS.md](./DECISIONS.md) — the judgement calls (especially ADR-002: why there is no ML).
-4. [Hazard_Log.md](./Hazard_Log.md) + [DTAC_self_assessment.md](./DTAC_self_assessment.md) — the
+1. [architecture.md](./architecture.md) - what it is and why.
+2. [DEFECT_TAXONOMY.md](./DEFECT_TAXONOMY.md) - the intellectual core.
+3. [DECISIONS.md](./DECISIONS.md) - the judgement calls (especially ADR-002: why there is no ML).
+4. [Hazard_Log.md](./Hazard_Log.md) + [DTAC_self_assessment.md](./DTAC_self_assessment.md) - the
    governance awareness, with honest caveats.
 
 **Root document:** `../README.md` (the recruiter-facing entry point). **Source of truth for this
