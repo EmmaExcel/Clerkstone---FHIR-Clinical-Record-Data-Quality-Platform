@@ -9,7 +9,7 @@
 Clerkstone ingests synthetic FHIR R4 patient records, validates them against HL7
 FHIR UK Core profiles, stores them in a hybrid relational/JSONB PostgreSQL
 schema, and exposes a governed REST API and React clinical timeline, plus a
-deterministic data-quality gateway that detects and reports the kinds of defects
+deterministic data quality gateway that detects and reports the kinds of defects
 that break real EPR migrations.
 
 ## 1. The healthcare problem
