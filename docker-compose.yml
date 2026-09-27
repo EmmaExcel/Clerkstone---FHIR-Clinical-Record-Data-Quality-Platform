@@ -60,10 +60,6 @@ services:
       - web
     ports:
       - "80:80"
-    security_opt:
-      - no-new-privileges:true
-    cap_drop:
-      - ALL
 
   validator:
     build:
