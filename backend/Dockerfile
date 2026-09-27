@@ -13,6 +13,9 @@ FROM python:3.12-slim AS runtime
 WORKDIR /app
 COPY --from=builder /app/.venv ./.venv
 COPY backend/app ./backend/app
+COPY backend/alembic ./backend/alembic
+COPY backend/alembic.ini ./
+COPY scripts ./scripts
 COPY data ./data
 
 ENV PATH="/app/.venv/bin:$PATH" \
