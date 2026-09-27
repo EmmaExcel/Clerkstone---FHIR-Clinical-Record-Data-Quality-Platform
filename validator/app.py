@@ -52,7 +52,7 @@ def validate(req: ValidateRequest) -> dict:
     out_path = path + ".out.json"
     try:
         cmd = [
-            "java", "-jar", str(_VALIDATOR_JAR), path,
+            "java", "-Xmx768m", "-jar", str(_VALIDATOR_JAR), path,
             "-version", "4.0.1",
             "-ig", _UKCORE_PACKAGE,
             "-output", out_path,
