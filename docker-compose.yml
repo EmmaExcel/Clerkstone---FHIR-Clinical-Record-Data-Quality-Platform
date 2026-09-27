@@ -56,6 +56,10 @@ services:
     depends_on:
       - api
       - web
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.clerkstone-nginx.rule=Host(`clerk.excelemma.site`)
+      - traefik.http.services.clerkstone-nginx.loadbalancer.server.port=80
 
   validator:
     build:
