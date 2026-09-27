@@ -3,8 +3,7 @@
 > **Portfolio prototype. All patient data is synthetic. Not NHS-approved, not
 > clinically validated, and must not be used for patient care.**
 
-**[Architecture](docs/architecture.md) · [Hazard log](docs/Hazard_Log.md)
-· [Data-quality defect taxonomy](docs/DEFECT_TAXONOMY.md) · [API guide](docs/API_GUIDE.md)**
+
 
 Clerkstone ingests synthetic FHIR R4 patient records, validates them against HL7
 FHIR UK Core profiles, stores them in a hybrid relational/JSONB PostgreSQL
