@@ -7,8 +7,6 @@ services:
       POSTGRES_USER: clerkstone
       POSTGRES_PASSWORD: clerkstone
       POSTGRES_DB: clerkstone
-    ports:
-      - "5432:5432"
     volumes:
       - clerkstone_pgdata:/var/lib/postgresql/data
       - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
@@ -58,8 +56,6 @@ services:
     depends_on:
       - api
       - web
-    ports:
-      - "80:80"
 
   validator:
     build:
@@ -67,8 +63,6 @@ services:
       dockerfile: Dockerfile
     environment:
       UKCORE_PACKAGE_VERSION: hl7.fhir.uk.core.r4@2.4.0
-    ports:
-      - "8080:8080"
     security_opt:
       - no-new-privileges:true
     cap_drop:
